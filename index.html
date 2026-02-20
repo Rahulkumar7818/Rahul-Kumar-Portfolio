@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahul Kumar · Nexus 2026</title>
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #03050a;
+      font-family: 'Montserrat', sans-serif;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    .noise-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.05) 0%, transparent 50%);
+      z-index: -2;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -1;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+      position: relative;
+    }
+
+    .navbar::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 30%;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffff, #ff00ff);
+    }
+
+    .logo {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffff, #ff00ff);
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::before {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      margin-bottom: 5rem;
+      position: relative;
+    }
+
+    .hero-left h1 {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff, #00ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .contact-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      padding: 1rem 2rem;
+      border-radius: 0;
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-item:hover {
+      border-color: #ff00ff;
+      transform: translateY(-2px);
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+      overflow: hidden;
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(120%);
+      transition: 0.5s;
+      background-image: url('https://www.w3schools.com/w3images/avatar2.png');
+      background-position: center;
+      background-size: cover;
+    }
+
+    .photo-frame:hover .profile-pic {
+      filter: grayscale(0%) contrast(100%);
+      transform: scale(1.1);
+    }
+
+    /* Section Title */
+    .section-title {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      width: 150%;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffff, #ff00ff, transparent);
+    }
+
+    /* About Section */
+    .about {
+      margin-bottom: 5rem;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .profile-title h2 {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 3rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .profile-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .detail-item {
+      display: flex;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-left: 3px solid #00ffff;
+    }
+
+    .detail-item strong {
+      width: 120px;
+      color: #00ffff;
+    }
+
+    /* B.Tech Curriculum Section */
+    .curriculum {
+      margin-bottom: 5rem;
+    }
+
+    .semester-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .semester-btn {
+      background: transparent;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .semester-btn.active {
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      color: #000;
+      border: none;
+    }
+
+    .semester-btn:hover {
+      border-color: #ff00ff;
+    }
+
+    .semester-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      display: none;
+    }
+
+    .semester-grid.active {
+      display: grid;
+    }
+
+    .subject-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-5px);
+      border-color: #ff00ff;
+    }
+
+    .subject-code {
+      color: #00ffff;
+      font-size: 0.9rem;
+      font-family: monospace;
+      margin-bottom: 0.5rem;
+    }
+
+    .subject-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .subject-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: linear-gradient(180deg, #00ffff, #ff00ff);
+      transition: 0.3s;
+    }
+
+    .subject-card:hover::before {
+      height: 100%;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      margin-bottom: 5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-card:nth-child(odd) {
+      transform: translateY(20px);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a2a, #16213e);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #00ffff;
+      transition: 0.5s;
+    }
+
+    .gallery-img i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .gallery-card:hover .gallery-img {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      color: #000;
+    }
+
+    /* Achievements Section */
+    .achievements {
+      margin-bottom: 5rem;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .achievement-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 0, 255, 0.2);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      background: linear-gradient(45deg, #00ffff, #ff00ff, #00ffff, #ff00ff);
+      background-size: 300% 300%;
+      opacity: 0;
+      z-index: -2;
+      animation: borderGlow 3s ease infinite;
+    }
+
+    .achievement-card:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .achievement-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .achievement-header i {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .achievement-header h3 {
+      font-size: 1.8rem;
+      font-family: 'Clash Display', sans-serif;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .score-card {
+      background: rgba(0, 255, 255, 0.1);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .score-card .label {
+      color: #00ffff;
+      font-size: 0.9rem;
+    }
+
+    .score-card .value {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .rank-box {
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      color: #000;
+      padding: 1.5rem;
+      text-align: center;
+      margin: 1.5rem 0;
+      font-weight: 700;
+    }
+
+    .rank-box .rank {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .nptel-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(0, 255, 255, 0.05);
+    }
+
+    .nptel-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .nptel-title i {
+      font-size: 2rem;
+      color: #ff00ff;
+    }
+
+    .nptel-title h4 {
+      font-size: 1.5rem;
+      color: #00ffff;
+    }
+
+    .nptel-list {
+      list-style: none;
+    }
+
+    .nptel-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid #ff00ff;
+    }
+
+    /* Projects Section */
+    .projects {
+      margin-bottom: 5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 2rem;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00ffff, #ff00ff);
+      transition: 0.3s;
+    }
+
+    .project-card:hover::after {
+      width: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .project-header h3 {
+      font-size: 1.3rem;
+      color: #00ffff;
+    }
+
+    .project-tag {
+      background: rgba(255, 0, 255, 0.2);
+      color: #ff00ff;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .tech {
+      background: rgba(0, 255, 255, 0.1);
+      color: #00ffff;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      margin-bottom: 5rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-input {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      padding: 1.2rem;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #ff00ff;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      color: #000;
+      padding: 1.2rem;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .contact-info {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 2rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .info-item i {
+      width: 30px;
+      color: #ff00ff;
+      font-size: 1.3rem;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 0;
+      border-top: 1px solid rgba(0, 255, 255, 0.2);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .achievements-grid,
+      .projects-grid,
+      .contact-grid,
+      .profile-details {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-left h1 {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise-bg"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">RAHUL KUMAR</div>
+      <div class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#curriculum">CURRICULUM</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#achievements">ACHIEVEMENTS</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <h1>RAHUL KUMAR</h1>
+        <div class="hero-tagline">
+          B.Tech CSE · NIT Patna · Full-Stack Developer · AI/ML Enthusiast
+        </div>
+        <div class="contact-links">
+          <a href="tel:+917818941304" class="contact-item"><i class="fas fa-phone"></i> Call</a>
+          <a href="mailto:rahulk.ug22.cs@nitp.ac.in" class="contact-item"><i class="fas fa-envelope"></i> Email</a>
+          <a href="https://linkedin.com/in/rahul-kumar-0a1203280" target="_blank" class="contact-item"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/Rahulkumar7818" target="_blank" class="contact-item"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="photo-frame">
+          <div class="profile-pic"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="profile-header">
+        <div class="profile-title">
+          <h2>PROFILE</h2>
+          <p>B.Tech-CSE</p>
+        </div>
+      </div>
+      
+      <div class="profile-details">
+        <div class="detail-item">
+          <strong>Name(In Hindi):</strong>
+          <span>—</span>
+        </div>
+        <div class="detail-item">
+          <strong>DOB:</strong>
+          <span>01 Jan 2005</span>
+        </div>
+        <div class="detail-item">
+          <strong>Gender:</strong>
+          <span>Male</span>
+        </div>
+        <div class="detail-item">
+          <strong>Category:</strong>
+          <span>SC</span>
+        </div>
+        <div class="detail-item">
+          <strong>Father's Name:</strong>
+          <span>RAGHUVIR SINGH</span>
+        </div>
+        <div class="detail-item">
+          <strong>Mother's Name:</strong>
+          <span>KESH DEVI</span>
+        </div>
+        <div class="detail-item">
+          <strong>Email Id:</strong>
+          <span>rahulk.ug22.cs@nitp.ac.in</span>
+        </div>
+        <div class="detail-item">
+          <strong>Mobile No:</strong>
+          <span>78189413**</span>
+        </div>
+        <div class="detail-item" style="grid-column: span 2;">
+          <strong>Address:</strong>
+          <span>RAHUL KUMAR S/O RAGHUVIR SINGH Mathura, Uttar Pradesh 281203</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- B.Tech CSE Curriculum Section -->
+    <section id="curriculum" class="curriculum">
+      <h2 class="section-title">B.TECH CSE CURRICULUM</h2>
+      
+      <div class="semester-tabs">
+        <button class="semester-btn active" onclick="showSemester(1)">SEM 1</button>
+        <button class="semester-btn" onclick="showSemester(2)">SEM 2</button>
+        <button class="semester-btn" onclick="showSemester(3)">SEM 3</button>
+        <button class="semester-btn" onclick="showSemester(4)">SEM 4</button>
+        <button class="semester-btn" onclick="showSemester(5)">SEM 5</button>
+        <button class="semester-btn" onclick="showSemester(6)">SEM 6</button>
+        <button class="semester-btn" onclick="showSemester(7)">SEM 7</button>
+        <button class="semester-btn" onclick="showSemester(8)">SEM 8</button>
+      </div>
+
+      <!-- Semester 1 -->
+      <div id="sem1" class="semester-grid active">
+        <div class="subject-card">
+          <div class="subject-code">MA14102</div>
+          <div class="subject-title">Engineering Mathematics - I</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CH14101</div>
+          <div class="subject-title">Engineering Chemistry</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">EC14102</div>
+          <div class="subject-title">Digital Design</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS14102</div>
+          <div class="subject-title">Programming in C</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">EAA14102</div>
+          <div class="subject-title">EAA - II Swachha Bharat Mission (SBM)</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS14106</div>
+          <div class="subject-title">Information Technology Workshop</div>
+        </div>
+      </div>
+
+      <!-- Semester 2 -->
+      <div id="sem2" class="semester-grid">
+        <div class="subject-card">
+          <div class="subject-code">HS24101</div>
+          <div class="subject-title">Communicative English</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">PH24101</div>
+          <div class="subject-title">Engineering Physics</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">EAA24101</div>
+          <div class="subject-title">EAA-I Sports/Innovative Project/NCC/NSS</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS24108</div>
+          <div class="subject-title">Computer Organization</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS24107</div>
+          <div class="subject-title">Web Technology</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">MA24102</div>
+          <div class="subject-title">Engineering Mathematics II</div>
+        </div>
+      </div>
+
+      <!-- Semester 3 -->
+      <div id="sem3" class="semester-grid">
+        <div class="subject-card">
+          <div class="subject-code">CS34104</div>
+          <div class="subject-title">Data Structures</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS34105</div>
+          <div class="subject-title">Object Oriented Programming</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS34109</div>
+          <div class="subject-title">Database Management Systems</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS34110</div>
+          <div class="subject-title">Discrete Mathematics and Graph Theory</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS34111</div>
+          <div class="subject-title">Operating Systems</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">HS34151</div>
+          <div class="subject-title">Social and Professional Ethics</div>
+        </div>
+      </div>
+
+      <!-- Semester 4 -->
+      <div id="sem4" class="semester-grid">
+        <div class="subject-card">
+          <div class="subject-code">CS44112</div>
+          <div class="subject-title">Artificial Intelligence</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS44113</div>
+          <div class="subject-title">Computer Networks</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS44114</div>
+          <div class="subject-title">Automata Theory and Compiler Design</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS44115</div>
+          <div class="subject-title">Design and Analysis of Algorithms</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS44146</div>
+          <div class="subject-title">Operations Research</div>
+        </div>
+      </div>
+
+      <!-- Semester 5 -->
+      <div id="sem5" class="semester-grid">
+        <div class="subject-card">
+          <div class="subject-code">CS54116</div>
+          <div class="subject-title">Software Engineering</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS54117</div>
+          <div class="subject-title">Internet of Things</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS54118</div>
+          <div class="subject-title">Machine Learning</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS54119</div>
+          <div class="subject-title">Information Security</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">OE05101</div>
+          <div class="subject-title">Communication Systems</div>
+        </div>
+      </div>
+
+      <!-- Semester 6 -->
+      <div id="sem6" class="semester-grid">
+        <div class="subject-card">
+          <div class="subject-code">NOC25-CS65</div>
+          <div class="subject-title">Social Networks</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS64120</div>
+          <div class="subject-title">Data Mining</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS64121</div>
+          <div class="subject-title">Cloud Computing</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS64123</div>
+          <div class="subject-title">Project</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS64158</div>
+          <div class="subject-title">Distributed Systems</div>
+        </div>
+      </div>
+
+      <!-- Semester 7 -->
+      <div id="sem7" class="semester-grid">
+        <div class="subject-card">
+          <div class="subject-code">CS74265</div>
+          <div class="subject-title">Deep Learning Algorithms</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS74190</div>
+          <div class="subject-title">Federated Learning</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">NOC25-CS103</div>
+          <div class="subject-title">The joy of computing using python</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS74135</div>
+          <div class="subject-title">Applied Cryptography</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS74144</div>
+          <div class="subject-title">Optimization Techniques</div>
+        </div>
+      </div>
+
+      <!-- Semester 8 -->
+      <div id="sem8" class="semester-grid">
+        <div class="subject-card">
+          <div class="subject-code">CS74125</div>
+          <div class="subject-title">Industrial Training</div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-code">CS74124</div>
+          <div class="subject-title">Research Project-I</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+      <h2 class="section-title">GALLERY</h2>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="gallery-img">
+            <i class="fas fa-code"></i>
+            <h3>Hackathon 2025</h3>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-img">
+            <i class="fas fa-users"></i>
+            <h3>Coding Club</h3>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-img">
+            <i class="fas fa-trophy"></i>
+            <h3>LeetCode 350+</h3>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-img">
+            <i class="fas fa-laptop-code"></i>
+            <h3>FEMbalance</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+      <h2 class="section-title">ACHIEVEMENTS</h2>
+      <div class="achievements-grid">
+        <!-- JEE MAIN Card -->
+        <div class="achievement-card">
+          <div class="achievement-header">
+            <i class="fas fa-scroll"></i>
+            <h3>JEE MAIN 2022</h3>
+          </div>
+          <div style="background: rgba(0,0,0,0.5); padding: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+              <span>Application: 220310658050</span>
+              <span>Roll: UP13002076</span>
+            </div>
+            
+            <div class="subject-grid">
+              <div class="score-card">
+                <div class="label">Physics</div>
+                <div class="value">93.95</div>
+              </div>
+              <div class="score-card">
+                <div class="label">Chemistry</div>
+                <div class="value">89.25</div>
+              </div>
+              <div class="score-card">
+                <div class="label">Mathematics</div>
+                <div class="value">94.66</div>
+              </div>
+            </div>
+
+            <div class="rank-box">
+              <div class="rank">#1929</div>
+              <div>ALL INDIA RANK (SC Category)</div>
+            </div>
+
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <th style="background: rgba(0,255,255,0.2); padding: 0.8rem;">Course</th>
+                  <th style="background: rgba(0,255,255,0.2); padding: 0.8rem;">CRL</th>
+                  <th style="background: rgba(0,255,255,0.2); padding: 0.8rem;">SC</th>
+                </tr>
+                <tr>
+                  <td style="padding: 0.8rem;">Paper 1 (B.E/B.Tech.)</td>
+                  <td style="padding: 0.8rem;">52849</td>
+                  <td style="padding: 0.8rem; background: rgba(255,0,255,0.2); color: #ff00ff;">1929</td>
+                </tr>
+              </table>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <div style="color: #00ffff; margin-bottom: 0.5rem;">Cut-off NTA Score:</div>
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <th style="background: rgba(0,255,255,0.2); padding: 0.5rem;">CRL</th>
+                  <th style="background: rgba(0,255,255,0.2); padding: 0.5rem;">GEN-EWS</th>
+                  <th style="background: rgba(0,255,255,0.2); padding: 0.5rem;">OBC-NCL</th>
+                  <th style="background: rgba(0,255,255,0.2); padding: 0.5rem;">SC</th>
+                </tr>
+                <tr>
+                  <td style="padding: 0.5rem;">88.41</td>
+                  <td style="padding: 0.5rem;">63.11</td>
+                  <td style="padding: 0.5rem;">67.00</td>
+                  <td style="padding: 0.5rem; background: rgba(255,0,255,0.2);">43.08</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other Achievements Card -->
+        <div class="achievement-card">
+          <div class="achievement-header">
+            <i class="fas fa-medal"></i>
+            <h3>ACHIEVEMENTS</h3>
+          </div>
+          
+          <!-- NPTEL Section -->
+          <div class="nptel-section">
+            <div class="nptel-title">
+              <i class="fas fa-certificate"></i>
+              <h4>NPTEL Certifications (IIT Madras)</h4>
+            </div>
+            <ul class="nptel-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <strong>Social Networks</strong>
+                  <span style="color: #00ffff; margin-left: 1rem;">Elite</span>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <strong>The Joy of Computing using Python</strong>
+                  <span style="color: #00ffff; margin-left: 1rem;">Elite + Silver</span>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <strong>Game Theory</strong>
+                  <span style="color: #00ffff; margin-left: 1rem;">Elite</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Other Achievements List -->
+          <ul style="list-style: none; margin-top: 2rem;">
+            <li style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; border-bottom: 1px solid rgba(0,255,255,0.2);">
+              <i class="fas fa-graduation-cap" style="color: #00ffff;"></i>
+              <span>UP Polytechnic - 2019</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; border-bottom: 1px solid rgba(0,255,255,0.2);">
+              <i class="fas fa-university" style="color: #ff00ff;"></i>
+              <span>IIT-JEE Mains - 2022</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; border-bottom: 1px solid rgba(0,255,255,0.2);">
+              <i class="fas fa-chart-line" style="color: #00ffff;"></i>
+              <span>NTA CUET - 2022</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; border-bottom: 1px solid rgba(0,255,255,0.2);">
+              <i class="fas fa-shield-alt" style="color: #ff00ff;"></i>
+              <span>ARMY TES-48 - 2022</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem;">
+              <i class="fas fa-code" style="color: #00ffff;"></i>
+              <span>LeetCode: 350+ problems solved</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem;">
+              <i class="fas fa-trophy" style="color: #ff00ff;"></i>
+              <span>Bajaj Datathon 2025</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem;">
+              <i class="fas fa-cubes" style="color: #00ffff;"></i>
+              <span>Odoo Hackathon 2023</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <h2 class="section-title">PROJECTS</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Women Safety ML</h3>
+            <span class="project-tag">AI/ML</span>
+          </div>
+          <p>Classification model for danger detection with real-time alerts.</p>
+          <div class="project-tech">
+            <span class="tech">Python</span>
+            <span class="tech">ML</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Invoice Extractor</h3>
+            <span class="project-tag">AI/ML</span>
+          </div>
+          <p>Medical invoice data extraction using OCR and Gemini.</p>
+          <div class="project-tech">
+            <span class="tech">Python</span>
+            <span class="tech">OCR</span>
+            <span class="tech">Gemini</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>FEMbalance</h3>
+            <span class="project-tag">MERN</span>
+          </div>
+          <p>Women's health platform with cycle tracking.</p>
+          <div class="project-tech">
+            <span class="tech">MongoDB</span>
+            <span class="tech">React</span>
+            <span class="tech">Node.js</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Ecommerce</h3>
+            <span class="project-tag">Web</span>
+          </div>
+          <p>Full-featured e-commerce website.</p>
+          <div class="project-tech">
+            <span class="tech">HTML</span>
+            <span class="tech">CSS</span>
+            <span class="tech">JS</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Sudoku Solver</h3>
+            <span class="project-tag">Algorithm</span>
+          </div>
+          <p>Backtracking algorithm for Sudoku puzzles.</p>
+          <div class="project-tech">
+            <span class="tech">Python</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>E-Book Manager</h3>
+            <span class="project-tag">React</span>
+          </div>
+          <p>Book management system with React.</p>
+          <div class="project-tech">
+            <span class="tech">React</span>
+            <span class="tech">JS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2 class="section-title">CONTACT</h2>
+      <div class="contact-grid">
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" class="form-input">
+          <input type="email" placeholder="Your Email" class="form-input">
+          <input type="text" placeholder="Subject" class="form-input">
+          <textarea rows="5" placeholder="Your Message" class="form-input"></textarea>
+          <button type="submit" class="submit-btn">SEND MESSAGE</button>
+        </form>
+        <div class="contact-info">
+          <div class="info-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+91 7818941304</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <span>rahulk.ug22.cs@nitp.ac.in</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>NIT Patna, Bihta Campus, Bihar</span>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-linkedin"></i>
+            <span>linkedin.com/in/rahul-kumar</span>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-github"></i>
+            <span>github.com/Rahulkumar7818</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2026 Rahul Kumar · NIT Patna · All Rights Reserved</p>
+    </footer>
+  </div>
+
+  <script>
+    function showSemester(semNumber) {
+      // Hide all semester grids
+      for (let i = 1; i <= 8; i++) {
+        document.getElementById('sem' + i).classList.remove('active');
+      }
+      
+      // Remove active class from all buttons
+      let buttons = document.querySelectorAll('.semester-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Show selected semester
+      document.getElementById('sem' + semNumber).classList.add('active');
+      
+      // Add active class to clicked button
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
